@@ -1,0 +1,14 @@
+import assert from "node:assert/strict";
+import {validateManifest, validateQuestionBank, verifySha256} from "./update-validator.mjs";
+const base={schema_version:2,channel:"test",app:{version_code:13},question_bank:{version:38,minimum_app_version_code:13}};
+assert.deepEqual(validateManifest(base),{appUpdate:false,bankUpdate:false,bankBlockedByApp:false});
+assert.throws(()=>validateManifest({...base,channel:"production"}),/Canal/);
+assert.deepEqual(validateManifest({...base,question_bank:{version:39,minimum_app_version_code:14}}),{appUpdate:false,bankUpdate:false,bankBlockedByApp:true});
+const q={id:"a",q:"Question ?",a:["A","B","C","D"],ok:0};
+assert.equal(validateQuestionBank({questions:[q]},1),true);
+assert.throws(()=>validateQuestionBank({questions:[q,q]},2),/dupliquée/);
+assert.throws(()=>validateQuestionBank({questions:[{...q,ok:4}]},1),/invalide/);
+const data=new TextEncoder().encode("abc");
+assert.equal(await verifySha256(data,"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"),true);
+assert.equal(await verifySha256(data,"0".repeat(64)),false);
+console.log("7 tests V13 réussis");
