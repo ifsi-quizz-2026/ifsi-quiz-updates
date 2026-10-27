@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "channel": "test",
+  "app": {
+    "version_name": "13.0.0",
+    "version_code": 13,
+    "release_url": null,
+    "sha256": null,
+    "signature": null
+  },
+  "question_bank": {
+    "version": 39,
+    "question_count": null,
+    "file": null,
+    "sha256": null,
+    "signature": null,
+    "minimum_app_version_code": 13
+  },
+  "release_notes": [
+    "Structure V13 de mise à jour en préparation"
+  ],
+  "published_at": null
+}
