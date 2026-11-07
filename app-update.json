@@ -1,7 +1,4 @@
 {
-  "schemaVersion": 1,
-  "versionCode": 15,
-  "status": "no_update",
-  "message": "Aucune nouvelle version Android publiée. La V15 reste la version actuelle.",
-  "updatedAt": "2026-11-06"
+  "versionCode": 31,
+  "sha256": "8b054a5fc59d7556f4dd0d209030be7e5e6b017d3d28717888cb41ea0d57859a"
 }
